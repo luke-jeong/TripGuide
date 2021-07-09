@@ -41,5 +41,7 @@ public class Detail {
 	@JsonProperty
 	private String cat1;
 	
+	private String s_date;
+	
 	
 }

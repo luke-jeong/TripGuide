@@ -86,7 +86,7 @@
 							$('<li>')
 									.append($('<div class="selectChek">'))
 									.append(
-											$('<a href="detail?currentPage=${currentPage}&areacode=${areacode}&sigungucode=${sigungucode}&arrange=${arrange}&numOfPage=${numOfPage}'
+											$('<a href="detail?currentPage=${currentPage}&areacode=${areacode}&sigungucode=${sigungucode}&arrange=${arrange}&numOfPage=${numOfPage}&s_date=${s_date}'
 													+'&contentid='+ item.contentid
 													+ '">'
 													+ '<img alt="'+item.title+'" src="'+imgValdCheck(item.firstimage)+'"/>'
@@ -161,7 +161,7 @@
 	}
 	function imgValdCheck(img){
 		if(img == null || img ==""){
-			img = "resources/img/unnamed.jpg"
+			img = "resources/res/img/unnamed.jpg"
 			}
 		return img;
 		}

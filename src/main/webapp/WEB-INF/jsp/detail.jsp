@@ -17,8 +17,35 @@ $(function() {
 function setAtagHtml(){
 	$('#aTag').find('a').text('홈페이지바로가기');
 }
-
-
+function prefer(){
+	var contentid = '${detail.firstimage}';
+	var title = '${detail.title}';
+	var addr = '${detail.addr1}';
+	var img = '${detail.firstimage}';
+	var s_date = chageDate('${detail.s_date}');
+	$.ajax({ 
+	    url: "prefer",  
+	    type: 'POST',  
+	    dataType: 'json', 
+	    data: JSON.stringify({ contentid: contentid, title : title,
+		     addr: addr, img : img, s_date : s_date}),
+	    contentType: 'application/json', 
+	    mimeType: 'application/json',
+	    success: function(response) {
+	    	if(response.result == true) {
+	    		alert('즐겨찾기에 추가하였습니다.');
+	    	}
+	    }, 
+	    error:function(xhr, status, message) { 
+	        alert(" status: "+status+" er:"+message);
+	    } 
+	 });  
+}
+function chageDate(date){
+	var dateArr = date.split('-');
+	var temp = new Date(dateArr[0], dateArr[1]-1, dateArr[2]);
+	return temp;
+}
 </script>
 
 </head>
@@ -80,7 +107,7 @@ function setAtagHtml(){
 								<button type="button" class="btn_bB1 best"
 									onclick="fnCampLike(); return false">추천하기</button>
 								<button type="button" class="btn_rB1 zzim"
-									onclick="fnCampBkmk(); return false">즐겨찾기</button>
+									onclick="prefer();">즐겨찾기</button>
 								<button type="button" class="btn_gB1 btn_modify"
 									onclick="history.back();">목록으로</button>
 							</div>

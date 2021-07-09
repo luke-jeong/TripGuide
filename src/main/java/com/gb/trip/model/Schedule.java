@@ -14,9 +14,11 @@ import lombok.ToString;
 @Builder
 @ToString
 public class Schedule {
-	private int idx;
-	private String addr;
-	private Date date;
+	private int id;
 	private String contentid;
-	private int userId;
+	private String title;
+	private String addr;
+	private String img;
+	private Date s_date;
+	private int uid;
 }

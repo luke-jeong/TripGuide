@@ -82,20 +82,20 @@ public class WeatherController {
 			for(Item i : item) {
 				if(i.getCategory().equals("PTY") && i.getFcstValue().equals("1")||i.getCategory().equals("PTY") && i.getFcstValue().equals("4")
 						||i.getCategory().equals("PTY") && i.getFcstValue().equals("5")) {					
-					img = "resources/img/cloud/1비.png";	
+					img = "resources/res/img/cloud/1비.png";	
 					mode = 1;
 				}else if(i.getCategory().equals("PTY") && i.getFcstValue().equals("2") || i.getCategory().equals("PTY") && i.getFcstValue().equals("6")) {
-					img = "resources/img/cloud/2비눈.png";
+					img = "resources/res/img/cloud/2비눈.png";
 					mode = 1;
 				}else if(i.getCategory().equals("PTY") && i.getFcstValue().equals("3") || i.getCategory().equals("PTY") && i.getFcstValue().equals("7")) {
-					img = "resources/img/cloud/3눈.png";	
+					img = "resources/res/img/cloud/3눈.png";	
 					mode = 1;
 				}else if( i.getCategory().equals("SKY") && i.getFcstValue().equals("1")) {
-					img = "resources/img/cloud/1맑음.png";
+					img = "resources/res/img/cloud/1맑음.png";
 				}else if( i.getCategory().equals("SKY") && i.getFcstValue().equals("3")) {
-					img = "resources/img/cloud/3구름많음.png";
+					img = "resources/res/img/cloud/3구름많음.png";
 				}else if( i.getCategory().equals("SKY") && i.getFcstValue().equals("4")) {
-					img = "resources/img/cloud/3구름많음.png";
+					img = "resources/res/img/cloud/3구름많음.png";
 				}
 			}
 					String temp = "";
@@ -115,17 +115,17 @@ public class WeatherController {
 			String img = "";
 				for(Item i : itemLongSky ) {
 					if(i.getWf3Am().equals("구름많고 비") ||i.getWf3Am().equals("흐리고 비")) {					
-						img = "resources/img/cloud/1비.png";	
+						img = "resources/res/img/cloud/1비.png";	
 					}else if(i.getWf3Am().equals("구름많고 비/눈") ||i.getWf3Am().equals("흐리고 비/눈")) {
-						img = "resources/img/cloud/2비눈.png";
+						img = "resources/res/img/cloud/2비눈.png";
 					}else if(i.getWf3Am().equals("흐리고눈") ||i.getWf3Am().equals("구름많고 눈")) {
-						img = "resources/img/cloud/3눈.png";	
+						img = "resources/res/img/cloud/3눈.png";	
 					}else if(i.getWf3Am().equals("구름많고 소나기") ||i.getWf3Am().equals("흐리고 소나기")) {
-						img = "resources/img/cloud/4소나기.png";
+						img = "resources/res/img/cloud/4소나기.png";
 					}else if(i.getWf3Am().equals("맑음") ) {
-						img = "resources/img/cloud/1맑음.png";
+						img = "resources/res/img/cloud/1맑음.png";
 					}else if(i.getWf3Am().equals("구름많음") ||i.getWf3Am().equals("흐림")) {
-						img = "resources/img/cloud/3구름많음.png";
+						img = "resources/res/img/cloud/3구름많음.png";
 					}
 				}
 			String temp = "";

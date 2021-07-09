@@ -43,6 +43,7 @@ public class HomeController {
 	public void detail(Model model, @RequestParam Map<String,String> map) throws IOException {
 		Detail detail = apiService.getDetail(map.get("contentid"));
 		Intro intro = apiService.getIntro(map.get("contentid"));
+		detail.setS_date(map.get("s_date"));
 		if(detail.getCat1().equals("A01")||detail.getCat1()!=null) 
 			detail.setCat1("자연");
 		else if(detail.getCat1().equals("A02")||detail.getCat1()!=null){
@@ -56,9 +57,9 @@ public class HomeController {
 		model.addAttribute("state", map);
 		model.addAttribute("detail", detail);
 		model.addAttribute("intro",intro);
-		model.addAttribute("img1",apiService.getImg(map.get("contentid")).size()<1||map.get("contentid")==null?"resources/img/unnamed.jpg":apiService.getImg(map.get("contentid")).get(0));
-		model.addAttribute("img2",apiService.getImg(map.get("contentid")).size()<2||map.get("contentid")==null?"resources/img/unnamed.jpg":apiService.getImg(map.get("contentid")).get(1));
-		model.addAttribute("img3",apiService.getImg(map.get("contentid")).size()<3||map.get("contentid")==null?"resources/img/unnamed.jpg":apiService.getImg(map.get("contentid")).get(2));
+		model.addAttribute("img1",apiService.getImg(map.get("contentid")).size()<1||map.get("contentid")==null?"resources/res/img/unnamed.jpg":apiService.getImg(map.get("contentid")).get(0));
+		model.addAttribute("img2",apiService.getImg(map.get("contentid")).size()<2||map.get("contentid")==null?"resources/res/img/unnamed.jpg":apiService.getImg(map.get("contentid")).get(1));
+		model.addAttribute("img3",apiService.getImg(map.get("contentid")).size()<3||map.get("contentid")==null?"resources/res/img/unnamed.jpg":apiService.getImg(map.get("contentid")).get(2));
 	}
 	
 }
