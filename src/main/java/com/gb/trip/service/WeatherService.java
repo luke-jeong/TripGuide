@@ -8,17 +8,17 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.gb.trip.model.Item;
-import com.gb.trip.model.RootInfo;
+import com.gb.trip.model.Items;
 
 
 @Service
 public class WeatherService {
    public List<Item> getitem(String base_date, String nx, String ny) {
       String json = "";
-      RootInfo root = null;
-
+      Items root = null;
       try {
          String serviceKey = "v8Rq%2FDVRJhUwjOVwm87fzxzOxJw7dponkZK3XSD0VKU%2FAhc2yNics%2BBD%2BlIkUea2KJYY2BZoMFO6L8CkID%2FZTw%3D%3D";
          String numOfRows = "10";
@@ -38,26 +38,21 @@ public class WeatherService {
             json = json.concat(r);
          }
 
-         //System.out.println(json); // 스트링 json
-
          ObjectMapper mapper = new ObjectMapper();
          mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); // java 오브젝트에 없는 프로퍼티로 생기는 오류 발생하지 않도록 설정
-         root = mapper.readValue(json, RootInfo.class);
-         
-         //JsonNode node = mapper.readTree(json);
-         //RootInfo root2 = mapper.readValue(node.findValue("items").toString(), RootInfo.class);                  
-         //System.out.println("root"+root2); // 객체로 매핑된 결과 출력
-
+     
+         JsonNode node = mapper.readTree(json);
+         root = mapper.readValue(node.findValue("items").toString(), Items.class);                  
+     
       } catch (Exception e) {
          e.printStackTrace();
       }
-      return root.getResponse().getBody().getItems().getItem();
-
+      return root.getItem();
    }
 
    public List<Item> getitemLong(String tmFc, String regId) {
       String json = "";
-      RootInfo root = null;      
+      Items root = null;      
       try {
          String serviceKey = "v8Rq%2FDVRJhUwjOVwm87fzxzOxJw7dponkZK3XSD0VKU%2FAhc2yNics%2BBD%2BlIkUea2KJYY2BZoMFO6L8CkID%2FZTw%3D%3D";
          String numOfRows = "10";
@@ -68,7 +63,7 @@ public class WeatherService {
          URL url = new URL("http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst" + "?serviceKey="
                + serviceKey + "&numOfRows=" + numOfRows + "&pageNo=" + pageNo + "&regId=" + regId + "&tmFc=" + tmFctime
                + "&dataType=JSON");
-         //System.out.println(url);
+        
          BufferedReader bf;
          String r = "";
          // url 로 지정한 요청으로부터 받은 json 데이터를 1줄씩 읽어서 string으로 연결하기
@@ -77,20 +72,20 @@ public class WeatherService {
 
             json = json.concat(r);
          }
-         //System.out.println(json);
+        
          
          ObjectMapper mapper = new ObjectMapper();
          mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); // java 오브젝트에 없는 프로퍼티로 생기는 오류 발생하지 않도록 설정
-         root = mapper.readValue(json, RootInfo.class);
-         //System.out.println(root.getResponse().getBody().getItems().getItem());
+         JsonNode node = mapper.readTree(json);
+         root = mapper.readValue(node.findValue("items").toString(), Items.class);  
       } catch (Exception e) {
          e.printStackTrace();
       }
-      return root.getResponse().getBody().getItems().getItem();
+      return root.getItem();
    }
    public List<Item> getitemLongTemp( String tmFc, String regTemp) {
       String json = "";
-      RootInfo root = null;      
+      Items root = null;      
       try {
          String serviceKey = "v8Rq%2FDVRJhUwjOVwm87fzxzOxJw7dponkZK3XSD0VKU%2FAhc2yNics%2BBD%2BlIkUea2KJYY2BZoMFO6L8CkID%2FZTw%3D%3D";
          String numOfRows = "10";
@@ -110,12 +105,12 @@ public class WeatherService {
          }
          ObjectMapper mapper = new ObjectMapper();
          mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); // java 오브젝트에 없는 프로퍼티로 생기는 오류 발생하지 않도록 설정
-         root = mapper.readValue(json, RootInfo.class);
-         
+         JsonNode node = mapper.readTree(json);
+         root = mapper.readValue(node.findValue("items").toString(), Items.class);   
       } catch (Exception e) {
          e.printStackTrace();
       }
-      return root.getResponse().getBody().getItems().getItem();
+      return root.getItem();
    }
 
 }
