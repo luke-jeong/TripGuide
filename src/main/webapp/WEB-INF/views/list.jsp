@@ -3,9 +3,6 @@
 <%@ include file="layout/header.jsp"%>
 <script type="text/javascript">
 	//사용자 목록 조회 요청
-	
-	
-	
 	$(function() {
 		tripList(${page.currentPage}, '${areacode}', '${sigungucode}', '${arrange}', ${numOfPage},'${s_date}');
 		currentState();
@@ -241,14 +238,14 @@
 						<option value="R" selected="">최신순</option>
 						<option value="O">제목순</option>
 						<option value="P">인기순</option>
-					</select> <input type="image" id="arrangeView" src="" alt="보기"> <select
+					</select> <input type="image" id="arrangeView" src="/res/img/show.png" alt="보기" style="width: 30px;"> <select
 						name="numOfPage" id="numOfPage" title="정렬개수 선택">
 						<option value="10">10개씩 보기</option>
 						<option value="20" selected>20개씩 보기</option>
 						<option value="30">30개씩 보기</option>
 						<option value="40">40개씩 보기</option>
 						<option value="50">50개씩 보기</option>
-					</select> <input type="image" id="numOfPageView" src="" alt="보기">
+					</select> <input type="image" id="numOfPageView" src="/res/img/show.png" alt="보기" style="width: 30px;">
 				</div>
 			</div>
 		</form>
