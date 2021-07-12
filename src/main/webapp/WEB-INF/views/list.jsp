@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
 <%@ include file="top.jsp"%>
-
+<script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	//사용자 목록 조회 요청
 	$(function() {
