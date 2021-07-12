@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
+<%@ include file="top.jsp"%>
+
 <script type="text/javascript">
 	//사용자 목록 조회 요청
 	$(function() {
@@ -276,5 +278,8 @@
 				href="?currentPage=${page.totalPage}&areacode=${areacode}&sigungucode=${sigungucode}&arrange=${arrange}&numOfPage=${numOfPage}&s_date=${s_date}">&gt;&gt;</a>
 		</div>
 	</section>
+	<a href = "" class ="go_top">
+			<i class="fas fa-arrow-up"></i>
+		</a>
 
 <%@ include file="layout/footer.jsp"%>
