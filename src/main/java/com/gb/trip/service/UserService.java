@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 
+import com.gb.trip.model.Prefer;
 import com.gb.trip.model.User;
 import com.gb.trip.model.UserRegistration;
 import com.gb.trip.repository.UserRepository;
@@ -51,8 +52,6 @@ public class UserService {
         }
         return false;
     }
-
-
     public User createDto(UserRegistration userRegistration) {
         User user = new User();
         user.setUsername(userRegistration.getUsername());
@@ -79,10 +78,6 @@ public class UserService {
 
     }
 
-
-
-
-
 	@Transactional
 	public void updateUser(User user) {
 		// 수정시에는 영속성 컨텍스트 User 오브젝트를 영속화시키고, 영속화된 User 오브젝트를 수정
@@ -103,6 +98,5 @@ public class UserService {
 		// 회원수정 함수 종료시 = 서비스 종료 = 트랜잭션 종료 = commit 이 자동으로 됩니다.
 		// 영속화된 persistance 객체의 변화가 감지되면 더티체킹이 되어 update문을 날려줌.
 	}
-
 
 }

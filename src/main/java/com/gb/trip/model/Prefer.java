@@ -1,6 +1,7 @@
 package com.gb.trip.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
@@ -36,7 +38,9 @@ public class Prefer {
 	private String addr;
 	private String img;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date s_date;
+	private LocalDate s_date;
+	@CreationTimestamp
+	private LocalDate regDate;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
 	private User user;

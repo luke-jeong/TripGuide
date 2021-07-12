@@ -41,7 +41,7 @@ public class WeatherAjaxController {
 			setData();
 		
 		if(map.get("areacode") == null || map.get("areacode")=="") {
-			String img = "resources/img/unnamed.jpg";
+			String img = "/img/unnamed.jpg";
 			String temp = "지역정보 없음";
 			map.put("img", img);
 			map.put("temp", temp);
@@ -116,17 +116,17 @@ public class WeatherAjaxController {
 			String img = "";
 				for(Item i : itemLongSky ) {
 					if(i.getWf3Am().equals("구름많고 비") ||i.getWf3Am().equals("흐리고 비")) {					
-						img = "resources/res/img/cloud/1비.png";	
+						img = "/res/img/cloud/1비.png";	
 					}else if(i.getWf3Am().equals("구름많고 비/눈") ||i.getWf3Am().equals("흐리고 비/눈")) {
-						img = "resources/res/img/cloud/2비눈.png";
+						img = "/res/img/cloud/2비눈.png";
 					}else if(i.getWf3Am().equals("흐리고눈") ||i.getWf3Am().equals("구름많고 눈")) {
-						img = "resources/res/img/cloud/3눈.png";	
+						img = "/res/img/cloud/3눈.png";	
 					}else if(i.getWf3Am().equals("구름많고 소나기") ||i.getWf3Am().equals("흐리고 소나기")) {
-						img = "resources/res/img/cloud/4소나기.png";
+						img = "/res/img/cloud/4소나기.png";
 					}else if(i.getWf3Am().equals("맑음") ) {
-						img = "resources/res/img/cloud/1맑음.png";
+						img = "/res/img/cloud/1맑음.png";
 					}else if(i.getWf3Am().equals("구름많음") ||i.getWf3Am().equals("흐림")) {
-						img = "resources/res/img/cloud/3구름많음.png";
+						img = "/res/img/cloud/3구름많음.png";
 					}
 				}
 			String temp = "";

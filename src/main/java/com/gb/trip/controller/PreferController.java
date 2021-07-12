@@ -1,26 +1,24 @@
 package com.gb.trip.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.gb.trip.config.MyUserDetails;
+import com.gb.trip.service.PreferService;
 
-import com.gb.trip.model.Prefer;
-
-@RestController
+@Controller
 public class PreferController {
 	
-	@PostMapping(value = "/prefer",  headers = { "Content-type=application/json" })
-	@ResponseBody
-	public Map<String,Object> insertTour(@RequestBody Prefer sch) {
-		if (sch != null) {
-			
-		}
-		Map<String,Object> result = new HashMap<String,Object>();
-		result.put("result", Boolean.TRUE);
-		return result;
+	@Autowired
+	private PreferService preferService;
+	
+	//즐겨찾기 페이지 시작시 모든 리스트 불러옴
+	@GetMapping("user/prefer")
+	public String prefer(@AuthenticationPrincipal MyUserDetails myUser, Model model) {
+		model.addAttribute("prefers", preferService.findAllByUserId(myUser.getUser().getId()));
+		return "user/prefer";
 	}
 }

@@ -68,7 +68,6 @@
 	
 	//리스트 관광지 정보	출력
 	function tripListResult(response) {
-		console.log(response);
 		$("ul.imgList").empty();
 		$.each(
 						response,
@@ -93,9 +92,8 @@
 	}
 	//리스트 날씨 출력
 	function weatherListResult(response) {
-		console.log(response);
 		$('.weather').each(function(i, element) {
-			$(element).html('<b>날씨</b></br><img alt="날씨" src="'+response[i].img+'" style="height: 50px; width: 50px;"><strong>'+response[i].temp+'</strong>');
+			$(element).html('<b>날씨</b></br><img alt="날씨" src="'+imgValdCheck(response[i].img)+'" style="height: 50px; width: 50px;"><strong>'+textValdCheck(response[i].temp)+'</strong>');
 		});//each
 		
 	}
@@ -144,14 +142,14 @@
 		$('#s_date').val('${s_date}');
 		}
 	function textValdCheck(txt) {
-		if (txt == null) {
+		if (txt == null || txt == 'undefine') {
 			txt = "";
 		}
 		return txt;
 	}
 	function imgValdCheck(img){
 		if(img == null || img ==""){
-			img = "resources/img/unnamed.jpg"
+			img = "/res/img/unnamed.jpg"
 			}
 		return img;
 		}
@@ -160,15 +158,17 @@
 	function validCheck(){
 		var frm = document.frm;
 		var today = new Date();
-		var endDate = addDate(today, 12);
+		var endDate = addDate(today, 10);
 		endDate = getFormatDate(endDate);
 		today = getFormatDate(today);
 		if (frm.s_date.value.valueOf() < today.valueOf()) {
+			$('#s_date').val(today);
 			alert("오늘 날짜 이후를 선택하세요.");
 			return;
 		}
 		if (frm.s_date.value.valueOf() > endDate.valueOf()) {
-			alert("오늘날짜 부터 12일 전까지 조회 가능합니다.");
+			$('#s_date').val(endDate);
+			alert("오늘날짜 부터 10일 전까지 조회 가능합니다.");
 			return;
 		}
 		frm.submit();
@@ -183,7 +183,7 @@
 	}
 	function addDate(date, days){
 		var clone = new Date(date);
-		clone.setDate(date.getDate()+12);
+		clone.setDate(date.getDate()+days);
 		return clone;
 		}
 </script>
