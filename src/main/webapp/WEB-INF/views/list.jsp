@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
-<%@ include file="top.jsp"%>
+
+<%@ include file="layout/top.jsp"%>
 <script defer src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" integrity="sha384-haqrlim99xjfMxRP6EWtafs0sB1WKcMdynwZleuUSwJR0mDeRYbhtY+KPMr+JL6f" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	//사용자 목록 조회 요청
@@ -92,7 +93,7 @@
 	//리스트 날씨 출력
 	function weatherListResult(response) {
 		$('.weather').each(function(i, element) {
-			$(element).html('<b>날씨</b></br><img alt="날씨" src="'+imgValdCheck(response[i].img)+'" style="height: 50px; width: 50px;"><strong>'+textValdCheck(response[i].temp)+'</strong>');
+			$(element).html('<b>날씨</b></br><img alt="날씨" src="'+imgValdCheck(response[i].img)+'" style="height: 40px; width: 50px;"><strong>'+textValdCheck(response[i].temp)+'</strong>');
 		});//each
 		
 	}
@@ -191,7 +192,7 @@
 
 		<div class="tableWrap"></div>
 		<form action="list" method="get" name="frm" >
-			<table class="bbsSearch" style="boarde: 0px; margin: auto;">
+			<table class="bbsSearch" style="boarder: 0px; margin: auto; width:800px;" >
 				<colgroup>
 					<col style="width: 95px;">
 					<col style="width: 861px!impotant;">
@@ -237,13 +238,13 @@
 				</p>
 				<div>
 					<select name="arrange" id="arrange" title="정렬항목 선택">
-						<option value="R" selected="">최신순</option>
+						<option value="R" >최신순</option>
 						<option value="O">제목순</option>
-						<option value="P">인기순</option>
+						<option value="P" selected>인기순</option>
 					</select> <input type="image" id="arrangeView" src="/res/img/show.png" alt="보기" style="width: 30px;"> <select
 						name="numOfPage" id="numOfPage" title="정렬개수 선택">
-						<option value="10">10개씩 보기</option>
-						<option value="20" selected>20개씩 보기</option>
+						<option value="10" selected>10개씩 보기</option>
+						<option value="20" >20개씩 보기</option>
 						<option value="30">30개씩 보기</option>
 						<option value="40">40개씩 보기</option>
 						<option value="50">50개씩 보기</option>
